@@ -1,0 +1,8 @@
+.c-footer {
+    overflow: hidden;
+    padding-bottom: $gutter;
+
+    @include md {
+        padding-bottom: 64px;
+    }
+}

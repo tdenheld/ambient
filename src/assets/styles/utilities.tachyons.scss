@@ -1,0 +1,984 @@
+/*-------------------------------------------------
+	  ************* Utilities **************
+-------------------------------------------------*/
+
+// displays
+// ----------------------------------------------------------------------
+.u-dn  { display: none; }
+.u-di  { display: inline; }
+.u-db  { display: block; }
+.u-dib { display: inline-block; }
+.u-dit { display: inline-table; }
+.u-dt  { display: table; }
+.u-df  { display: flex; }
+
+
+
+// overflows | positions
+// ----------------------------------------------------------------------
+.u-hidden { overflow: hidden; }
+.u-pos-r { position: relative; }
+.u-pos-a { position: absolute; }
+.u-pos-f { position: fixed; }
+.u-pos-s { position: static; }
+.u-pos-i { position: inherit; }
+
+// nudge elements a tiny bit
+@for $i from 0 through 16 {
+    $y: $i * 1px;
+    .u-top-#{$i}px {top: $y;}
+    .u-top-min-#{$i}px {top: -$y;}
+    .u-bottom-#{$i}px {bottom: $y;}
+    .u-bottom-min-#{$i}px {bottom: -$y;}
+    .u-left-#{$i}px {left: $y;}
+    .u-left-min-#{$i}px {left: -$y;}
+    .u-right-#{$i}px {right: $y;}
+    .u-right-min-#{$i}px {right: -$y;}
+}
+
+
+
+// full fills
+// ----------------------------------------------------------------------
+.u-full-absolute { @include full(absolute); }
+.u-full-fixed    { @include full(fixed); }
+
+
+
+// cursor
+// ----------------------------------------------------------------------
+.u-cur-pointer { cursor: pointer; }
+
+
+
+// rotation
+// ----------------------------------------------------------------------
+.u-ro-45  { transform: rotate(45deg); }
+.u-ro-90  { transform: rotate(90deg); }
+.u-ro-135 { transform: rotate(135deg); }
+.u-ro-180 { transform: rotate(180deg); }
+.u-ro-225 { transform: rotate(225deg); }
+.u-ro-270 { transform: rotate(270deg); }
+.u-ro-315 { transform: rotate(315deg); }
+
+.u-ro-svg-45  { svg { transform: rotate(45deg); }}
+.u-ro-svg-90  { svg { transform: rotate(90deg); }}
+.u-ro-svg-135 { svg { transform: rotate(135deg); }}
+.u-ro-svg-180 { svg { transform: rotate(180deg); }}
+.u-ro-svg-225 { svg { transform: rotate(225deg); }}
+.u-ro-svg-270 { svg { transform: rotate(270deg); }}
+.u-ro-svg-315 { svg { transform: rotate(315deg); }}
+
+
+
+/*-------------------
+       Spacers
+--------------------*/
+
+/*
+	Base:
+	p = padding
+	m = margin
+	
+	Modifiers:
+	a = all
+	h = horizontal
+	v = vertical
+	t = top
+	r = right
+	b = bottom
+	l = left
+	
+	Media Query Extensions:
+     \@sm = min-width $sm
+     \@sm-max = min-width $sm-max (only mobile)
+     \@md = min-width $md
+     \@lg = min-width $lg
+*/
+
+// auto-margins
+// rem padding (NS tile padding)
+.u-ma-auto {margin: auto;}
+.u-mh-auto {margin: 0 auto;}
+.u-mv-auto {margin: auto 0;}
+.u-pa-2r {padding: 2rem;}
+
+@include sm {
+    .u-ma-auto\@sm {margin: auto;}
+    .u-mh-auto\@sm {margin: 0 auto;}
+    .u-mv-auto\@sm {margin: auto 0;}
+    .u-pa-2r\@sm {padding: 2rem;}    
+}
+@include md {
+    .u-ma-auto\@md {margin: auto;}
+    .u-mh-auto\@md {margin: 0 auto;}
+    .u-mv-auto\@md {margin: auto 0;}
+    .u-pa-2r\@md {padding: 2rem;}  
+}
+@include lg {
+    .u-ma-auto\@lg {margin: auto;}
+    .u-mh-auto\@lg {margin: 0 auto;}
+    .u-mv-auto\@lg {margin: auto 0;}
+    .u-pa-2r\@lg {padding: 2rem;}   
+}
+
+@for $i from 0 through 20 {	
+	// margin
+	.u-ma-#{$i} {	@include spacer($i, margin); }
+	.u-mh-#{$i} {	@include spacer($i, margin-left); @include spacer($i, margin-right); }
+	.u-mv-#{$i} {	@include spacer($i, margin-top); @include spacer($i, margin-bottom); }
+	.u-mt-#{$i} {	@include spacer($i, margin-top); }
+	.u-mb-#{$i} {	@include spacer($i, margin-bottom); }
+	.u-ml-#{$i} {	@include spacer($i, margin-left); }
+	.u-mr-#{$i} {	@include spacer($i, margin-right); }
+
+	// padding
+	.u-pa-#{$i} {	@include spacer($i, padding); }
+	.u-ph-#{$i} {	@include spacer($i, padding-left); @include spacer($i, padding-right); }
+	.u-pv-#{$i} {	@include spacer($i, padding-top); @include spacer($i, padding-bottom); }
+	.u-pt-#{$i} {	@include spacer($i, padding-top); }
+	.u-pb-#{$i} {	@include spacer($i, padding-bottom); }
+	.u-pl-#{$i} {	@include spacer($i, padding-left); }
+    .u-pr-#{$i} {	@include spacer($i, padding-right); }
+    
+    @include sm-max {
+        // margin
+        .u-ma-#{$i}\@sm-max {	@include spacer($i, margin); }
+        .u-mh-#{$i}\@sm-max {	@include spacer($i, margin-left); @include spacer($i, margin-right); }
+        .u-mv-#{$i}\@sm-max {	@include spacer($i, margin-top); @include spacer($i, margin-bottom); }
+        .u-mt-#{$i}\@sm-max {	@include spacer($i, margin-top); }
+        .u-mb-#{$i}\@sm-max {	@include spacer($i, margin-bottom); }
+        .u-ml-#{$i}\@sm-max {	@include spacer($i, margin-left); }
+        .u-mr-#{$i}\@sm-max {	@include spacer($i, margin-right); }
+
+        // padding
+        .u-pa-#{$i}\@sm-max {	@include spacer($i, padding); }
+        .u-ph-#{$i}\@sm-max {	@include spacer($i, padding-left); @include spacer($i, padding-right); }
+        .u-pv-#{$i}\@sm-max {	@include spacer($i, padding-top); @include spacer($i, padding-bottom); }
+        .u-pt-#{$i}\@sm-max {	@include spacer($i, padding-top); }
+        .u-pb-#{$i}\@sm-max {	@include spacer($i, padding-bottom); }
+        .u-pl-#{$i}\@sm-max {	@include spacer($i, padding-left); }
+        .u-pr-#{$i}\@sm-max {	@include spacer($i, padding-right); }
+    }		
+	@include sm {
+		// margin
+		.u-ma-#{$i}\@sm {	@include spacer($i, margin); }
+		.u-mh-#{$i}\@sm {	@include spacer($i, margin-left); @include spacer($i, margin-right); }
+		.u-mv-#{$i}\@sm {	@include spacer($i, margin-top); @include spacer($i, margin-bottom); }
+		.u-mt-#{$i}\@sm {	@include spacer($i, margin-top); }
+		.u-mb-#{$i}\@sm {	@include spacer($i, margin-bottom); }
+		.u-ml-#{$i}\@sm {	@include spacer($i, margin-left); }
+		.u-mr-#{$i}\@sm {	@include spacer($i, margin-right); }
+
+		// paddin\@sm
+		.u-pa-#{$i}\@sm {	@include spacer($i, padding); }
+		.u-ph-#{$i}\@sm {	@include spacer($i, padding-left); @include spacer($i, padding-right); }
+		.u-pv-#{$i}\@sm {	@include spacer($i, padding-top); @include spacer($i, padding-bottom); }
+		.u-pt-#{$i}\@sm {	@include spacer($i, padding-top); }
+		.u-pb-#{$i}\@sm {	@include spacer($i, padding-bottom); }
+		.u-pl-#{$i}\@sm {	@include spacer($i, padding-left); }
+		.u-pr-#{$i}\@sm {	@include spacer($i, padding-right); }
+	}
+	@include md {
+		// margin
+		.u-ma-#{$i}\@md {	@include spacer($i, margin); }
+		.u-mh-#{$i}\@md {	@include spacer($i, margin-left); @include spacer($i, margin-right); }
+		.u-mv-#{$i}\@md {	@include spacer($i, margin-top); @include spacer($i, margin-bottom); }
+		.u-mt-#{$i}\@md {	@include spacer($i, margin-top); }
+		.u-mb-#{$i}\@md {	@include spacer($i, margin-bottom); }
+		.u-ml-#{$i}\@md {	@include spacer($i, margin-left); }
+		.u-mr-#{$i}\@md {	@include spacer($i, margin-right); }
+				 
+		// paddin\@md
+		.u-pa-#{$i}\@md {	@include spacer($i, padding); }
+		.u-ph-#{$i}\@md {	@include spacer($i, padding-left); @include spacer($i, padding-right); }
+		.u-pv-#{$i}\@md {	@include spacer($i, padding-top); @include spacer($i, padding-bottom); }
+		.u-pt-#{$i}\@md {	@include spacer($i, padding-top); }
+		.u-pb-#{$i}\@md {	@include spacer($i, padding-bottom); }
+		.u-pl-#{$i}\@md {	@include spacer($i, padding-left); }
+		.u-pr-#{$i}\@md {	@include spacer($i, padding-right); }
+	}
+	@include lg {
+		// margin
+		.u-ma-#{$i}\@lg {	@include spacer($i, margin); }
+		.u-mh-#{$i}\@lg {	@include spacer($i, margin-left); @include spacer($i, margin-right); }
+		.u-mv-#{$i}\@lg {	@include spacer($i, margin-top); @include spacer($i, margin-bottom); }
+		.u-mt-#{$i}\@lg {	@include spacer($i, margin-top); }
+		.u-mb-#{$i}\@lg {	@include spacer($i, margin-bottom); }
+		.u-ml-#{$i}\@lg {	@include spacer($i, margin-left); }
+		.u-mr-#{$i}\@lg {	@include spacer($i, margin-right); }
+				 
+		// paddin\@lg
+		.u-pa-#{$i}\@lg {	@include spacer($i, padding); }
+		.u-ph-#{$i}\@lg {	@include spacer($i, padding-left); @include spacer($i, padding-right); }
+		.u-pv-#{$i}\@lg {	@include spacer($i, padding-top); @include spacer($i, padding-bottom); }
+		.u-pt-#{$i}\@lg {	@include spacer($i, padding-top); }
+		.u-pb-#{$i}\@lg {	@include spacer($i, padding-bottom); }
+		.u-pl-#{$i}\@lg {	@include spacer($i, padding-left); }
+		.u-pr-#{$i}\@lg {	@include spacer($i, padding-right); }
+	}
+}
+
+
+/*-------------------
+       Widths
+--------------------*/
+
+.u-w-auto {    width:    auto; }
+.u-w-inherit { width: inherit; }
+
+.u-w-10 {  width:  10%; }
+.u-w-20 {  width:  20%; }
+.u-w-25 {  width:  25%; }
+.u-w-30 {  width:  30%; }
+.u-w-33 {  width:  33%; }
+.u-w-34 {  width:  34%; }
+.u-w-40 {  width:  40%; }
+.u-w-50 {  width:  50%; }
+.u-w-60 {  width:  60%; }
+.u-w-70 {  width:  70%; }
+.u-w-75 {  width:  75%; }
+.u-w-80 {  width:  80%; }
+.u-w-90 {  width:  90%; }
+.u-w-100 { width: 100%; }
+
+@include sm {
+	.u-w-auto\@sm {    width:    auto; }
+	.u-w-inherit\@sm { width: inherit; }
+	.u-w-10\@sm {  width:  10%; }
+	.u-w-20\@sm {  width:  20%; }
+	.u-w-25\@sm {  width:  25%; }
+	.u-w-30\@sm {  width:  30%; }
+	.u-w-33\@sm {  width:  33%; }
+	.u-w-34\@sm {  width:  34%; }
+	.u-w-40\@sm {  width:  40%; }
+	.u-w-50\@sm {  width:  50%; }
+	.u-w-60\@sm {  width:  60%; }
+	.u-w-70\@sm {  width:  70%; }
+	.u-w-75\@sm {  width:  75%; }
+	.u-w-80\@sm {  width:  80%; }
+	.u-w-90\@sm {  width:  90%; }
+	.u-w-100\@sm { width: 100%; }
+}
+@include md {
+	.u-w-auto\@md {    width:    auto; }
+	.u-w-inherit\@md { width: inherit; }
+	.u-w-10\@md {  width:  10%; }
+	.u-w-20\@md {  width:  20%; }
+	.u-w-25\@md {  width:  25%; }
+	.u-w-30\@md {  width:  30%; }
+	.u-w-33\@md {  width:  33%; }
+	.u-w-34\@md {  width:  34%; }
+	.u-w-40\@md {  width:  40%; }
+	.u-w-50\@md {  width:  50%; }
+	.u-w-60\@md {  width:  60%; }
+	.u-w-70\@md {  width:  70%; }
+	.u-w-75\@md {  width:  75%; }
+	.u-w-80\@md {  width:  80%; }
+	.u-w-90\@md {  width:  90%; }
+	.u-w-100\@md { width: 100%; }
+}
+@include lg {
+	.u-w-auto\@lg {    width:    auto; }
+	.u-w-inherit\@lg { width: inherit; }
+	.u-w-10\@lg {  width:  10%; }
+	.u-w-20\@lg {  width:  20%; }
+	.u-w-25\@lg {  width:  25%; }
+	.u-w-30\@lg {  width:  30%; }
+	.u-w-33\@lg {  width:  33%; }
+	.u-w-34\@lg {  width:  34%; }
+	.u-w-40\@lg {  width:  40%; }
+	.u-w-50\@lg {  width:  50%; }
+	.u-w-60\@lg {  width:  60%; }
+	.u-w-70\@lg {  width:  70%; }
+	.u-w-75\@lg {  width:  75%; }
+	.u-w-80\@lg {  width:  80%; }
+	.u-w-90\@lg {  width:  90%; }
+	.u-w-100\@lg { width: 100%; }
+}
+
+// max widths
+@for $i from 0 through 32 {
+    $x: $i * 50;
+    $y: $i * 50px;
+    .u-mxw-#{$x} {
+        max-width: #{$y};
+    }
+}
+
+
+
+
+/*-------------------
+      CSS grid
+--------------------*/
+
+// base
+// -------------------------
+.u-g { display: grid }
+
+// gap
+// -------------------------
+.u-gap-1px { grid-gap: 1px; }
+.u-col-gap-1px { grid-column-gap: 1px; }
+.u-row-gap-1px { grid-row-gap: 1px; }
+
+.u-gap-2px { grid-gap: 2px; }
+.u-col-gap-2px { grid-column-gap: 2px; }
+.u-row-gap-2px { grid-row-gap: 2px; }
+
+@for $i from 0 through 12 {
+	.u-gap-#{$i} { @include spacer($i, grid-gap); }
+	.u-col-gap-#{$i} { @include spacer($i, grid-column-gap); }
+    .u-row-gap-#{$i} { @include spacer($i, grid-row-gap); }
+        
+    @include sm {
+        .u-gap-#{$i}\@sm { @include spacer($i, grid-gap); }
+	    .u-col-gap-#{$i}\@sm { @include spacer($i, grid-column-gap); }
+        .u-row-gap-#{$i}\@sm { @include spacer($i, grid-row-gap); }
+    }
+    @include md {
+        .u-gap-#{$i}\@md { @include spacer($i, grid-gap); }
+	    .u-col-gap-#{$i}\@md { @include spacer($i, grid-column-gap); }
+        .u-row-gap-#{$i}\@md { @include spacer($i, grid-row-gap); }
+    }
+    @include lg {
+        .u-gap-#{$i}\@lg { @include spacer($i, grid-gap); }
+	    .u-col-gap-#{$i}\@lg { @include spacer($i, grid-column-gap); }
+        .u-row-gap-#{$i}\@lg { @include spacer($i, grid-row-gap); }
+    }
+}
+
+// fractions
+// -------------------------
+.u-g-1 {grid-template-columns: 1fr;}
+.u-g-2 {grid-template-columns: repeat(2,1fr);}
+.u-g-3 {grid-template-columns: repeat(3,1fr);}
+.u-g-4 {grid-template-columns: repeat(4,1fr);}
+.u-g-5 {grid-template-columns: repeat(5,1fr);}
+.u-g-6 {grid-template-columns: repeat(6,1fr);}
+
+@include sm {
+	.u-g-1\@sm {grid-template-columns: 1fr;}
+	.u-g-2\@sm {grid-template-columns: repeat(2,1fr);}
+	.u-g-3\@sm {grid-template-columns: repeat(3,1fr);}
+	.u-g-4\@sm {grid-template-columns: repeat(4,1fr);}
+	.u-g-5\@sm {grid-template-columns: repeat(5,1fr);}
+	.u-g-6\@sm {grid-template-columns: repeat(6,1fr);}
+}
+@include md {
+	.u-g-1\@md {grid-template-columns: 1fr;}
+	.u-g-2\@md {grid-template-columns: repeat(2,1fr);}
+	.u-g-3\@md {grid-template-columns: repeat(3,1fr);}
+	.u-g-4\@md {grid-template-columns: repeat(4,1fr);}
+	.u-g-5\@md {grid-template-columns: repeat(5,1fr);}
+	.u-g-6\@md {grid-template-columns: repeat(6,1fr);}
+}
+@include lg {
+	.u-g-1\@lg {grid-template-columns: 1fr;}
+	.u-g-2\@lg {grid-template-columns: repeat(2,1fr);}
+	.u-g-3\@lg {grid-template-columns: repeat(3,1fr);}
+	.u-g-4\@lg {grid-template-columns: repeat(4,1fr);}
+	.u-g-5\@lg {grid-template-columns: repeat(5,1fr);}
+	.u-g-6\@lg {grid-template-columns: repeat(6,1fr);}
+}
+
+// combos
+// -------------------------
+.u-g-m-1 {grid-template-columns: max-content 1fr;}
+.u-g-1-m {grid-template-columns: 1fr max-content;}
+.u-g-m-m {grid-template-columns: max-content max-content;}
+.u-g-2-1 {grid-template-columns: 2fr 1fr;}
+.u-g-1-2 {grid-template-columns: 1fr 2fr;}
+.u-g-3-2 {grid-template-columns: 3fr 2fr;}
+.u-g-2-3 {grid-template-columns: 2fr 3fr;}
+.u-g-4-1 {grid-template-columns: 4fr 1fr;}
+.u-g-1-4 {grid-template-columns: 1fr 4fr;}
+.u-g-5-3 {grid-template-columns: 5fr 3fr;}
+.u-g-3-5 {grid-template-columns: 3fr 5fr;}
+
+@include sm {
+	.u-g-m-1\@sm {grid-template-columns: max-content 1fr;}
+	.u-g-1-m\@sm {grid-template-columns: 1fr max-content;}
+	.u-g-m-m\@sm {grid-template-columns: max-content max-content;}
+	.u-g-2-1\@sm {grid-template-columns: 2fr 1fr;}
+	.u-g-1-2\@sm {grid-template-columns: 1fr 2fr;}
+	.u-g-3-2\@sm {grid-template-columns: 3fr 2fr;}
+	.u-g-2-3\@sm {grid-template-columns: 2fr 3fr;}
+	.u-g-4-1\@sm {grid-template-columns: 4fr 1fr;}
+	.u-g-1-4\@sm {grid-template-columns: 1fr 4fr;}
+	.u-g-5-3\@sm {grid-template-columns: 5fr 3fr;}
+	.u-g-3-5\@sm {grid-template-columns: 3fr 5fr;}
+}
+@include md {
+	.u-g-m-1\@md {grid-template-columns: max-content 1fr;}
+	.u-g-1-m\@md {grid-template-columns: 1fr max-content;}
+	.u-g-m-m\@md {grid-template-columns: max-content max-content;}
+	.u-g-2-1\@md {grid-template-columns: 2fr 1fr;}
+	.u-g-1-2\@md {grid-template-columns: 1fr 2fr;}
+	.u-g-3-2\@md {grid-template-columns: 3fr 2fr;}
+	.u-g-2-3\@md {grid-template-columns: 2fr 3fr;}
+	.u-g-4-1\@md {grid-template-columns: 4fr 1fr;}
+	.u-g-1-4\@md {grid-template-columns: 1fr 4fr;}
+	.u-g-5-3\@md {grid-template-columns: 5fr 3fr;}
+	.u-g-3-5\@md {grid-template-columns: 3fr 5fr;}
+}
+@include lg {
+	.u-g-m-1\@lg {grid-template-columns: max-content 1fr;}
+	.u-g-1-m\@lg {grid-template-columns: 1fr max-content;}
+	.u-g-m-m\@lg {grid-template-columns: max-content max-content;}
+	.u-g-2-1\@lg {grid-template-columns: 2fr 1fr;}
+	.u-g-1-2\@lg {grid-template-columns: 1fr 2fr;}
+	.u-g-3-2\@lg {grid-template-columns: 3fr 2fr;}
+	.u-g-2-3\@lg {grid-template-columns: 2fr 3fr;}
+	.u-g-4-1\@lg {grid-template-columns: 4fr 1fr;}
+	.u-g-1-4\@lg {grid-template-columns: 1fr 4fr;}
+	.u-g-5-3\@lg {grid-template-columns: 5fr 3fr;}
+	.u-g-3-5\@lg {grid-template-columns: 3fr 5fr;}
+}
+
+//childs
+// -------------------------
+.u-gc-1 {grid-column: span 1;}
+.u-gc-2 {grid-column: span 2;}
+.u-gc-3 {grid-column: span 3;}
+.u-gc-4 {grid-column: span 4;}
+.u-gc-5 {grid-column: span 5;}
+.u-gc-6 {grid-column: span 6;}
+
+@include sm {
+	.u-gc-1\@sm {grid-column: span 1;}
+	.u-gc-2\@sm {grid-column: span 2;}
+	.u-gc-3\@sm {grid-column: span 3;}
+	.u-gc-4\@sm {grid-column: span 4;}
+	.u-gc-5\@sm {grid-column: span 5;}
+	.u-gc-6\@sm {grid-column: span 6;}
+}
+@include md {
+	.u-gc-1\@md {grid-column: span 1;}
+	.u-gc-2\@md {grid-column: span 2;}
+	.u-gc-3\@md {grid-column: span 3;}
+	.u-gc-4\@md {grid-column: span 4;}
+	.u-gc-5\@md {grid-column: span 5;}
+	.u-gc-6\@md {grid-column: span 6;}
+}
+@include lg {
+	.u-gc-1\@lg {grid-column: span 1;}
+	.u-gc-2\@lg {grid-column: span 2;}
+	.u-gc-3\@lg {grid-column: span 3;}
+	.u-gc-4\@lg {grid-column: span 4;}
+	.u-gc-5\@lg {grid-column: span 5;}
+	.u-gc-6\@lg {grid-column: span 6;}
+}
+
+// alignment
+// -------------------------
+.u-items-start     { align-items: start; }
+.u-items-end       { align-items: end; }
+.u-items-center    { align-items: center; }
+.u-items-baseline  { align-items: baseline; }
+.u-items-stretch   { align-items: stretch; }
+
+.u-self-start      { align-self: start; }
+.u-self-end        { align-self: end; }
+.u-self-center     { align-self: center; }
+.u-self-baseline   { align-self: baseline; }
+.u-self-stretch    { align-self: stretch; }
+
+.u-justify-start   { justify-content: start; }
+.u-justify-end     { justify-content: end; }
+.u-justify-center  { justify-content: center; }
+.u-justify-between { justify-content: space-between; }
+.u-justify-around  { justify-content: space-around; }
+
+.u-content-start   { align-content: start; }
+.u-content-end     { align-content: end; }
+.u-content-center  { align-content: center; }
+.u-content-between { align-content: space-between; }
+.u-content-around  { align-content: space-around; }
+.u-content-stretch { align-content: stretch; }
+
+@include sm {
+	.u-items-start\@sm     { align-items: start; }
+	.u-items-end\@sm       { align-items: end; }
+	.u-items-center\@sm    { align-items: center; }
+	.u-items-baseline\@sm  { align-items: baseline; }
+	.u-items-stretch\@sm   { align-items: stretch; }
+	
+	.u-self-start\@sm      { align-self: start; }
+	.u-self-end\@sm        { align-self: end; }
+	.u-self-center\@sm     { align-self: center; }
+	.u-self-baseline\@sm   { align-self: baseline; }
+	.u-self-stretch\@sm    { align-self: stretch; }
+	
+	.u-justify-start\@sm   { justify-content: start; }
+	.u-justify-end\@sm     { justify-content: end; }
+	.u-justify-center\@sm  { justify-content: center; }
+	.u-justify-between\@sm { justify-content: space-between; }
+	.u-justify-around\@sm  { justify-content: space-around; }
+	
+	.u-content-start\@sm   { align-content: start; }
+	.u-content-end\@sm     { align-content: end; }
+	.u-content-center\@sm  { align-content: center; }
+	.u-content-between\@sm { align-content: space-between; }
+	.u-content-around\@sm  { align-content: space-around; }
+	.u-content-stretch\@sm { align-content: stretch; }
+}
+@include md {
+	.u-items-start\@md     { align-items: start; }
+	.u-items-end\@md       { align-items: end; }
+	.u-items-center\@md    { align-items: center; }
+	.u-items-baseline\@md  { align-items: baseline; }
+	.u-items-stretch\@md   { align-items: stretch; }
+	
+	.u-self-start\@md      { align-self: start; }
+	.u-self-end\@md        { align-self: end; }
+	.u-self-center\@md     { align-self: center; }
+	.u-self-baseline\@md   { align-self: baseline; }
+	.u-self-stretch\@md    { align-self: stretch; }
+	
+	.u-justify-start\@md   { justify-content: start; }
+	.u-justify-end\@md     { justify-content: end; }
+	.u-justify-center\@md  { justify-content: center; }
+	.u-justify-between\@md { justify-content: space-between; }
+	.u-justify-around\@md  { justify-content: space-around; }
+	
+	.u-content-start\@md   { align-content: start; }
+	.u-content-end\@md     { align-content: end; }
+	.u-content-center\@md  { align-content: center; }
+	.u-content-between\@md { align-content: space-between; }
+	.u-content-around\@md  { align-content: space-around; }
+	.u-content-stretch\@md { align-content: stretch; }
+}
+@include lg {
+	.u-items-start\@lg     { align-items: start; }
+	.u-items-end\@lg       { align-items: end; }
+	.u-items-center\@lg    { align-items: center; }
+	.u-items-baseline\@lg  { align-items: baseline; }
+	.u-items-stretch\@lg   { align-items: stretch; }
+	
+	.u-self-start\@lg      { align-self: start; }
+	.u-self-end\@lg        { align-self: end; }
+	.u-self-center\@lg     { align-self: center; }
+	.u-self-baseline\@lg   { align-self: baseline; }
+	.u-self-stretch\@lg    { align-self: stretch; }
+	
+	.u-justify-start\@lg   { justify-content: start; }
+	.u-justify-end\@lg     { justify-content: end; }
+	.u-justify-center\@lg  { justify-content: center; }
+	.u-justify-between\@lg { justify-content: space-between; }
+	.u-justify-around\@lg  { justify-content: space-around; }
+	
+	.u-content-start\@lg   { align-content: start; }
+	.u-content-end\@lg     { align-content: end; }
+	.u-content-center\@lg  { align-content: center; }
+	.u-content-between\@lg { align-content: space-between; }
+	.u-content-around\@lg  { align-content: space-around; }
+	.u-content-stretch\@lg { align-content: stretch; }
+}
+
+// order
+// -------------------------
+.u-order-0 { order: 0; }
+.u-order-1 { order: 1; }
+.u-order-2 { order: 2; }
+.u-order-3 { order: 3; }
+.u-order-4 { order: 4; }
+.u-order-5 { order: 5; }
+.u-order-6 { order: 6; }
+.u-order-7 { order: 7; }
+.u-order-8 { order: 8; }
+.u-order-last { order: 99999; }
+
+@include sm {
+	.u-order-0\@sm { order: 0; }
+	.u-order-1\@sm { order: 1; }
+	.u-order-2\@sm { order: 2; }
+	.u-order-3\@sm { order: 3; }
+	.u-order-4\@sm { order: 4; }
+	.u-order-5\@sm { order: 5; }
+	.u-order-6\@sm { order: 6; }
+	.u-order-7\@sm { order: 7; }
+	.u-order-8\@sm { order: 8; }
+	.u-order-last\@sm { order: 99999; }
+}
+@include md {
+	.u-order-0\@md { order: 0; }
+	.u-order-1\@md { order: 1; }
+	.u-order-2\@md { order: 2; }
+	.u-order-3\@md { order: 3; }
+	.u-order-4\@md { order: 4; }
+	.u-order-5\@md { order: 5; }
+	.u-order-6\@md { order: 6; }
+	.u-order-7\@md { order: 7; }
+	.u-order-8\@md { order: 8; }
+	.u-order-last\@md { order: 99999; }
+}
+@include lg {
+	.u-order-0\@lg { order: 0; }
+	.u-order-1\@lg { order: 1; }
+	.u-order-2\@lg { order: 2; }
+	.u-order-3\@lg { order: 3; }
+	.u-order-4\@lg { order: 4; }
+	.u-order-5\@lg { order: 5; }
+	.u-order-6\@lg { order: 6; }
+	.u-order-7\@lg { order: 7; }
+	.u-order-8\@lg { order: 8; }
+	.u-order-last\@lg { order: 99999; }
+}
+
+
+
+/*-------------------
+     Seen or not
+--------------------*/
+
+// opacities
+// ----------------------------------------------------------------------
+.u-o-100 { opacity: 1;    }
+.u-o-95  { opacity: .95;  }
+.u-o-90  { opacity: .9;   }
+.u-o-85  { opacity: .85;  }
+.u-o-80  { opacity: .8;   }
+.u-o-75  { opacity: .75;  }
+.u-o-70  { opacity: .7;   }
+.u-o-60  { opacity: .6;   }
+.u-o-50  { opacity: .5;   }
+.u-o-40  { opacity: .4;   }
+.u-o-35  { opacity: .35;  }
+.u-o-30  { opacity: .3;   }
+.u-o-25  { opacity: .25;  }
+.u-o-20  { opacity: .2;   }
+.u-o-10  { opacity: .1;   }
+.u-o-05  { opacity: .05;  }
+.u-o-025 { opacity: .025; }
+.u-o-0   { opacity: 0;    }
+
+// display none on breakpoints
+// ----------------------------------------------------------------------
+.u-visible-xs { @include sm     { display: none; }}
+.u-hidden-xs {  @include sm-max { display: none; }}
+.u-hidden\@sm {  @include sm-ex  { display: none; }}
+.u-hidden\@md {  @include md-ex  { display: none; }}
+.u-hidden\@lg {  @include lg     { display: none; }}
+
+// visibility
+// ----------------------------------------------------------------------
+.u-v-visible { visibility: visible; }
+.u-v-hidden { visibility: hidden; }
+
+
+
+/*-------------------
+      Typography
+--------------------*/
+
+// font sizes
+// ----------------------------------------------------------------------
+.u-fs-10 {font-size: toRem(10px);}
+.u-fs-12 {font-size: toRem(12px);}
+.u-fs-14 {font-size: toRem(14px);}
+.u-fs-16 {font-size: toRem(16px);}
+.u-fs-18 {font-size: toRem(18px);}
+.u-fs-20 {font-size: toRem(20px);}
+.u-fs-24 {font-size: toRem(24px);}
+.u-fs-28 {font-size: toRem(28px);}
+.u-fs-30 {font-size: toRem(30px);}
+.u-fs-32 {font-size: toRem(32px);}
+.u-fs-36 {font-size: toRem(36px);}
+.u-fs-38 {font-size: toRem(38px);}
+.u-fs-40 {font-size: toRem(40px);}
+.u-fs-48 {font-size: toRem(48px);}
+.u-fs-56 {font-size: toRem(56px);}
+.u-fs-60 {font-size: toRem(60px);}
+.u-fs-64 {font-size: toRem(64px);}
+.u-fs-72 {font-size: toRem(72px);}
+.u-fs-80 {font-size: toRem(80px);}
+.u-fs-96 {font-size: toRem(96px);}
+
+@include sm {
+    .u-fs-12\@sm {font-size: toRem(12px);}
+    .u-fs-14\@sm {font-size: toRem(14px);}
+	.u-fs-16\@sm {font-size: toRem(16px);}
+	.u-fs-18\@sm {font-size: toRem(18px);}
+	.u-fs-20\@sm {font-size: toRem(20px);}
+	.u-fs-24\@sm {font-size: toRem(24px);}
+	.u-fs-28\@sm {font-size: toRem(28px);}
+	.u-fs-30\@sm {font-size: toRem(30px);}
+	.u-fs-32\@sm {font-size: toRem(32px);}
+	.u-fs-36\@sm {font-size: toRem(36px);}
+	.u-fs-38\@sm {font-size: toRem(38px);}
+	.u-fs-40\@sm {font-size: toRem(40px);}
+	.u-fs-48\@sm {font-size: toRem(48px);}
+	.u-fs-56\@sm {font-size: toRem(56px);}
+	.u-fs-60\@sm {font-size: toRem(60px);}
+	.u-fs-64\@sm {font-size: toRem(64px);}
+	.u-fs-72\@sm {font-size: toRem(72px);}
+	.u-fs-80\@sm {font-size: toRem(80px);}
+	.u-fs-96\@sm {font-size: toRem(96px);}
+}
+@include md {
+    .u-fs-12\@md {font-size: toRem(12px);}
+    .u-fs-14\@md {font-size: toRem(14px);}
+	.u-fs-16\@md {font-size: toRem(16px);}
+	.u-fs-18\@md {font-size: toRem(18px);}
+	.u-fs-20\@md {font-size: toRem(20px);}
+	.u-fs-24\@md {font-size: toRem(24px);}
+	.u-fs-28\@md {font-size: toRem(28px);}
+	.u-fs-30\@md {font-size: toRem(30px);}
+	.u-fs-32\@md {font-size: toRem(32px);}
+	.u-fs-36\@md {font-size: toRem(36px);}
+	.u-fs-38\@md {font-size: toRem(38px);}
+	.u-fs-40\@md {font-size: toRem(40px);}
+	.u-fs-48\@md {font-size: toRem(48px);}
+	.u-fs-56\@md {font-size: toRem(56px);}
+	.u-fs-60\@md {font-size: toRem(60px);}
+	.u-fs-64\@md {font-size: toRem(64px);}
+	.u-fs-72\@md {font-size: toRem(72px);}
+	.u-fs-80\@md {font-size: toRem(80px);}
+	.u-fs-96\@md {font-size: toRem(96px);}
+}
+@include lg {
+    .u-fs-12\@lg {font-size: toRem(12px);}
+    .u-fs-14\@lg {font-size: toRem(14px);}
+	.u-fs-16\@lg {font-size: toRem(16px);}
+	.u-fs-18\@lg {font-size: toRem(18px);}
+	.u-fs-20\@lg {font-size: toRem(20px);}
+	.u-fs-24\@lg {font-size: toRem(24px);}
+	.u-fs-28\@lg {font-size: toRem(28px);}
+	.u-fs-30\@lg {font-size: toRem(30px);}
+	.u-fs-32\@lg {font-size: toRem(32px);}
+	.u-fs-36\@lg {font-size: toRem(36px);}
+	.u-fs-38\@lg {font-size: toRem(38px);}
+	.u-fs-40\@lg {font-size: toRem(40px);}
+	.u-fs-48\@lg {font-size: toRem(48px);}
+	.u-fs-56\@lg {font-size: toRem(56px);}
+	.u-fs-60\@lg {font-size: toRem(60px);}
+	.u-fs-64\@lg {font-size: toRem(64px);}
+	.u-fs-72\@lg {font-size: toRem(72px);}
+	.u-fs-80\@lg {font-size: toRem(80px);}
+	.u-fs-96\@lg {font-size: toRem(96px);}
+}
+
+// line-heights
+// ----------------------------------------------------------------------
+.u-lh-none  { line-height: 0; }
+.u-lh-solid { line-height: 1; }
+.u-lh-title { line-height: 1.25; }
+.u-lh-copy  { line-height: 1.5; }
+
+@include sm {
+	.u-lh-none\@sm  { line-height: 0; }
+	.u-lh-solid\@sm { line-height: 1; }
+	.u-lh-title\@sm { line-height: 1.25; }
+	.u-lh-copy\@sm  { line-height: 1.5; }
+}
+@include md {
+	.u-lh-none\@md  { line-height: 0; }
+	.u-lh-solid\@md { line-height: 1; }
+	.u-lh-title\@md { line-height: 1.25; }
+	.u-lh-copy\@md  { line-height: 1.5; }
+}
+@include lg {
+	.u-lh-none\@lg  { line-height: 0; }
+	.u-lh-solid\@lg { line-height: 1; }
+	.u-lh-title\@lg { line-height: 1.25; }
+	.u-lh-copy\@lg  { line-height: 1.5; }
+}
+
+// letter spacings
+// ----------------------------------------------------------------------
+.u-ls-normal { letter-spacing: initial; }
+.u-ls-wide { letter-spacing: $ls-wide; }
+.u-ls-small { letter-spacing: $ls-small; }
+
+// font colors
+// ----------------------------------------------------------------------
+.u-fc-brand {color: $brand;}
+.u-fc-brand-dark {color: $brand-dark;}
+.u-fc-light {color: $light;}
+.u-fc-dark {color: $dark;}
+.u-fc-grey-1 {color: $grey-1;}
+.u-fc-grey-2 {color: $grey-2;}
+.u-fc-grey-3 {color: $grey-3;}
+.u-fc-grey-4 {color: $grey-4;}
+.u-fc-grey-5 {color: $grey-5;}
+.u-fc-grey-6 {color: $grey-6;}
+.u-fc-grey-7 {color: $grey-7;}
+.u-fc-grey-8 {color: $grey-8;} 
+.u-fc-grey-8 {color: $grey-9;} 
+
+// font weights
+// ----------------------------------------------------------------------
+.u-fw-normal {font-weight: normal;}
+.u-fw-b {font-weight: bold;}
+@for $i from 1 through 9 {
+	$weight: $i * 100;
+	.u-fw-#{$weight} {
+		font-weight: $weight;
+	}
+}
+
+// font families
+// ----------------------------------------------------------------------
+.u-sans-serif {font-family: $sans;}
+.u-serif      {font-family: $serif;}
+.u-mono       {font-family: $mono;}
+
+// word wraps
+// ----------------------------------------------------------------------
+.u-no-wrap {white-space: nowrap;}
+.u-break-word {word-wrap: break-word;}
+
+// case
+// ----------------------------------------------------------------------
+.u-uppercase {
+    text-transform: uppercase;
+}
+
+
+
+/*-------------------
+      Text align
+--------------------*/
+
+.u-txt-l  { text-align: left; }
+.u-txt-r  { text-align: right; }
+.u-txt-c  { text-align: center; }
+.u-txt-j  { text-align: justify; }
+
+@include sm {
+	.u-txt-l\@sm  { text-align: left; }
+	.u-txt-r\@sm  { text-align: right; }
+	.u-txt-c\@sm  { text-align: center; }
+	.u-txt-j\@sm  { text-align: justify; }
+}
+@include md {
+	.u-txt-l\@md  { text-align: left; }
+	.u-txt-r\@md  { text-align: right; }
+	.u-txt-c\@md  { text-align: center; }
+	.u-txt-j\@md  { text-align: justify; }
+}
+@include lg {
+	.u-txt-l\@lg  { text-align: left; }
+	.u-txt-r\@lg  { text-align: right; }
+	.u-txt-c\@lg  { text-align: center; }
+	.u-txt-j\@lg  { text-align: justify; }
+}
+
+
+
+/*-------------------
+      SVG styles
+--------------------*/
+
+.u-svg-brand svg {fill: $brand;}
+.u-svg-dark  svg {fill: $dark;}
+.u-svg-light svg {fill: $light;}
+
+
+
+
+/*-------------------
+       Borders
+--------------------*/
+
+/*
+	Base:
+	bo = border
+	br = border-radius
+	
+	Modifiers:
+	-a = all
+	-h = horizontal
+	-v = vertical
+	-t = top
+	-r = right
+	-b = bottom
+	-l = left
+	
+	Media Query Extensions:
+     \@sm = min-width $sm
+     \@md = min-width $md
+     \@lg = min-width $lg
+*/
+
+// default border is $grey-8 (#e8e8e6)
+.u-bo-none {border: none;}
+
+.u-bo-a {border: 1px solid $grey-8;}
+.u-bo-h {border-right: 1px solid $grey-8; border-left: 1px solid $grey-8;}
+.u-bo-v {border-top: 1px solid $grey-8; border-bottom: 1px solid $grey-8;}
+.u-bo-t {border-top: 1px solid $grey-8;}
+.u-bo-b {border-bottom: 1px solid $grey-8;}
+.u-bo-l {border-left: 1px solid $grey-8;}
+.u-bo-r {border-right: 1px solid $grey-8;}
+ 
+.u-bo-a-light {border: 1px solid $light;}
+.u-bo-h-light {border-right: 1px solid $light; border-left: 1px solid $light;}
+.u-bo-v-light {border-top: 1px solid $light; border-bottom: 1px solid $light;}
+.u-bo-t-light {border-top: 1px solid $light;}
+.u-bo-b-light {border-bottom: 1px solid $light;}
+.u-bo-l-light {border-left: 1px solid $light;}
+.u-bo-r-light {border-right: 1px solid $light;}
+
+// radius
+// --------------------------------------------
+.u-br-none {border-radius: none;}
+.u-br-4    {border-radius: 4px;}
+.u-br-8    {border-radius: 8px;}
+.u-br-12   {border-radius: 12px;}
+.u-br-16   {border-radius: 16px;}
+.u-br-pill {border-radius: 100px;}
+.u-br-50ct {border-radius: 50%;}
+
+
+
+
+/*-------------------
+     Backgrounds
+--------------------*/
+
+/*
+	Base:
+	bg = background
+	gd = gradient
+	
+	Modifiers:
+	-r = radial
+	-110 = degrees
+*/
+
+// size
+// --------------------------------------------
+.u-bg-cover {	  @include bg(cover); }
+.u-bg-contain { @include bg(contain); }
+
+// fills
+// --------------------------------------------
+.u-bg-none {background: none;}
+.u-bg-brand {background-color: $brand;}
+.u-bg-dark {background-color: $dark;}
+.u-bg-light {background-color: $light;}
+.u-bg-white {background-color: $white;}
+.u-bg-grey-1 {background-color: $grey-1;}
+.u-bg-grey-2 {background-color: $grey-2;}
+.u-bg-grey-3 {background-color: $grey-3;}
+.u-bg-grey-4 {background-color: $grey-4;}
+.u-bg-grey-5 {background-color: $grey-5;}
+.u-bg-grey-6 {background-color: $grey-6;}
+.u-bg-grey-7 {background-color: $grey-7;}
+.u-bg-grey-8 {background-color: $grey-8;}
+.u-bg-grey-9 {background-color: $grey-9;}
+
+// gradients
+// --------------------------------------------
+// linear
+.u-gd-110-brand {background: linear-gradient(110deg, $brand 0%, $brand-dark 100%);}
+.u-gd-0-ba {background: linear-gradient(0deg, rgba($black, 1) 0%, rgba($black, 0) 100%);}
+.u-gd-90-ba {background: linear-gradient(90deg, rgba($black, 1) 0%, rgba($black, 0) 100%);}
+.u-gd-180-ba {background: linear-gradient(180deg, rgba($black, 1) 0%, rgba($black, 0) 100%);}
+.u-gd-270-ba {background: linear-gradient(270deg, rgba($black, 1) 0%, rgba($black, 0) 100%);}
+
+// radial
+.u-gd-r-brand {background: radial-gradient(circle at 50% 50%, $brand 0%, $brand-dark 100%);}

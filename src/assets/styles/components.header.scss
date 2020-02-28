@@ -1,0 +1,10 @@
+.c-header {
+    position: fixed;
+    width: 100%;
+    margin-top: $gutter;
+    z-index: 666;
+
+    @include md {
+        margin-top: 64px;
+    }
+}

@@ -1,0 +1,32 @@
+.c-sound {
+    display: grid;
+    grid-gap: $gutter;
+
+    @include sm {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include xl {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.c-sound__item {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: $quarter-gutter;
+    align-items: center;
+    justify-content: start;
+    padding: $quarter-gutter;
+    background-color: $grey-9;
+    border-radius: 3px;
+}
+
+.c-sound__heading {
+    margin-bottom: $quarter-gutter;
+    @include font(18px, bold, $lh-title);
+}

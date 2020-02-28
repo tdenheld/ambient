@@ -1,0 +1,20 @@
+// links
+// --------------------------------------------------
+.link {
+    position: relative;
+
+    &:after {
+        @include link(0);
+    }
+}
+
+.no-touchevents {
+    .link:hover:after {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+.link--nav:after {
+    height: calc(100% - 8px);
+}

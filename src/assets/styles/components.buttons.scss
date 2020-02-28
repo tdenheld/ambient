@@ -1,0 +1,44 @@
+.c-button {
+    @include center(inline-flex);
+    position: relative;
+    overflow: hidden;
+    padding: 0 $half-gutter;
+    min-width: 100px;
+    height: 36px;
+    @include font(14px, bold, $lh-solid);
+    background-color: $brand;
+    color: $light;
+    text-align: center;
+    border-radius: 100px;
+    transition: $fade-all;
+
+    @media (max-width: 320px) {
+        min-width: 80px;
+    }
+
+    &:hover:not(:disabled) {
+        @keyframes scale-io-btn {
+            0% {transform: scale(1);}
+            50% {transform: scale(1.04);}
+            100% {transform: scale(1);}
+        }
+        animation: scale-io-btn 380ms $ease both;
+    }
+
+    &.is-playing {
+        background-color: transparent;
+        color: $brand;
+        border: 2px solid $brand;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+    }
+}
+
+.c-button--round {
+    min-width: initial;
+    width: 36px;
+    padding: 0;
+    @include center(flex);
+}

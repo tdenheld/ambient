@@ -1,0 +1,28 @@
+.o-heading-l {
+    font-size: calc(20px + 8vw);
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: $ls-small;
+}
+
+.o-heading-m {
+    font-size: calc(18px + 1.5vw);
+    line-height: $lh-title;
+}
+
+.o-txt-body {
+    font-family: $sans;
+    font-size: toRem(18px);
+
+    @include sm {
+        font-size: toRem(24px);
+    }
+}
+
+.o-txt-caption {
+    font-family: $sans;
+    font-size: toRem(12px);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: toRem(3px);
+}
