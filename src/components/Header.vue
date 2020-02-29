@@ -1,7 +1,7 @@
 <template>
 	<header class="u-mb-8 u-mb-12@sm u-mb-18@lg">
-		<h1 class="o-heading-l u-mb-2 gs-stag" v-html="title"></h1>
-        <p class="o-heading-m gs-stag">{{ description }}</p>
+		<h1 class="o-heading-l u-mb-2 gsap-stag" v-html="title"></h1>
+        <p class="o-heading-m gsap-stag">{{ description }}</p>
 	</header>
 </template>
 

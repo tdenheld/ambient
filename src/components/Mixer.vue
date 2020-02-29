@@ -1,6 +1,6 @@
 <template>
 	<ul class="c-sound u-pb-4">
-		<li v-for="(entry, index) in sounds" class="gs-stag">
+		<li v-for="(entry, index) in sounds" class="gsap-stag">
 			<h2 class="c-sound__heading">{{ entry.title }}</h2>
 
 			<!-- controls -->
