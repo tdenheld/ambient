@@ -42,7 +42,7 @@
 		data() {
 			return {
 				volume: {
-                    current: 100,
+					current: 100,
 					min: 0,
 					max: 100,
 					increment: 20
@@ -82,23 +82,19 @@
 			checkVolumeButtons() {
 				const volume = this.volume.current;
 
-				if (volume === this.volume.min) {
-					this.decDisabled = true;
-				} else {
-					this.decDisabled = false;
-				}
-
-				if (volume === this.volume.max) {
-					this.incDisabled = true;
-				} else {
-					this.incDisabled = false;
-				}
+				volume === this.volume.min
+					? (this.decDisabled = true)
+                    : (this.decDisabled = false);
+                    
+				volume === this.volume.max
+					? (this.incDisabled = true)
+					: (this.incDisabled = false);
 			},
 
 			changeVolume(direction) {
-                const audio = this.$refs.audio;
-                const min = this.volume.min + this.volume.increment;
-                const max = this.volume.max - this.volume.increment;
+				const audio = this.$refs.audio;
+				const min = this.volume.min + this.volume.increment;
+				const max = this.volume.max - this.volume.increment;
 
 				if (direction === "-") {
 					if (this.volume.current >= min) {

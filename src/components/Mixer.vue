@@ -1,6 +1,6 @@
 <template>
 	<ul class="c-sound u-pb-4">
-		<li v-for="(entry, index) in sounds" class="gsap-stag">
+		<li v-for="entry in sounds" class="gsap-stag">
 			<vc-channel :title="entry.title" :file="entry.file"></vc-channel>
 		</li>
 	</ul>
