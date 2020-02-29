@@ -9,13 +9,13 @@
 
 <script>
 	import { gsap } from 'gsap';
-	import Header from './components/Header.vue';
-    import Mixer from './components/Mixer.vue';
+	import vcHeader from './components/Header.vue';
+    import vcMixer from './components/Mixer.vue';
 
 	export default {
 		components: {
-			'vc-header': Header,
-            'vc-mixer': Mixer
+			vcHeader,
+            vcMixer
 		},
 
 		methods: {
