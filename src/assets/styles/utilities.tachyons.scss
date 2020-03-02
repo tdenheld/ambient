@@ -16,7 +16,7 @@
 
 // overflows | positions
 // ----------------------------------------------------------------------
-.u-hidden { overflow: hidden; }
+.u-o-hidden { overflow: hidden; }
 .u-pos-r { position: relative; }
 .u-pos-a { position: absolute; }
 .u-pos-f { position: fixed; }
@@ -319,31 +319,31 @@
 
 // gap
 // -------------------------
-.u-gap-1px { grid-gap: 1px; }
+.u-gap-1px { gap: 1px; }
 .u-col-gap-1px { grid-column-gap: 1px; }
 .u-row-gap-1px { grid-row-gap: 1px; }
 
-.u-gap-2px { grid-gap: 2px; }
+.u-gap-2px { gap: 2px; }
 .u-col-gap-2px { grid-column-gap: 2px; }
 .u-row-gap-2px { grid-row-gap: 2px; }
 
 @for $i from 0 through 12 {
-	.u-gap-#{$i} { @include spacer($i, grid-gap); }
+	.u-gap-#{$i} { @include spacer($i, gap); }
 	.u-col-gap-#{$i} { @include spacer($i, grid-column-gap); }
     .u-row-gap-#{$i} { @include spacer($i, grid-row-gap); }
         
     @include sm {
-        .u-gap-#{$i}\@sm { @include spacer($i, grid-gap); }
+        .u-gap-#{$i}\@sm { @include spacer($i, gap); }
 	    .u-col-gap-#{$i}\@sm { @include spacer($i, grid-column-gap); }
         .u-row-gap-#{$i}\@sm { @include spacer($i, grid-row-gap); }
     }
     @include md {
-        .u-gap-#{$i}\@md { @include spacer($i, grid-gap); }
+        .u-gap-#{$i}\@md { @include spacer($i, gap); }
 	    .u-col-gap-#{$i}\@md { @include spacer($i, grid-column-gap); }
         .u-row-gap-#{$i}\@md { @include spacer($i, grid-row-gap); }
     }
     @include lg {
-        .u-gap-#{$i}\@lg { @include spacer($i, grid-gap); }
+        .u-gap-#{$i}\@lg { @include spacer($i, gap); }
 	    .u-col-gap-#{$i}\@lg { @include spacer($i, grid-column-gap); }
         .u-row-gap-#{$i}\@lg { @include spacer($i, grid-row-gap); }
     }

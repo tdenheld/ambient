@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	import vcChannel from "./Channel.vue";
+	import vcChannel from './Channel.vue';
 
 	export default {
 		components: {
@@ -18,20 +18,20 @@
 			return {
 				sounds: [
 					{
-						title: "Thunderstorm",
-						file: "thunderstorm.m4a"
+						title: 'Thunderstorm',
+						file: 'thunderstorm.m4a'
 					},
 					{
-						title: "Montana Lake",
-						file: "montana-lake.m4a"
+						title: 'Montana Lake',
+						file: 'montana-lake.m4a'
 					},
 					{
-						title: "Spring Meadow",
-						file: "spring-meadow.m4a"
+						title: 'Spring Meadow',
+						file: 'spring-meadow.m4a'
 					},
 					{
-						title: "Varadero Beach",
-						file: "varadero-beach.m4a"
+						title: 'Varadero Beach',
+						file: 'varadero-beach.m4a'
 					}
 				]
 			};

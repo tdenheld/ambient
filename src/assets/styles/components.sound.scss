@@ -1,6 +1,6 @@
 .c-sound {
     display: grid;
-    grid-gap: $gutter;
+    gap: $gutter;
 
     @include sm {
         grid-template-columns: repeat(2, 1fr);
@@ -17,8 +17,9 @@
 
 .c-sound__item {
     display: grid;
-    grid-auto-flow: column;
-    grid-gap: $quarter-gutter;
+    // grid-auto-flow: column;
+    grid-template-columns: repeat(3, max-content) repeat(2, 1fr);
+    gap: $quarter-gutter;
     align-items: center;
     justify-content: start;
     padding: $quarter-gutter;
@@ -29,4 +30,25 @@
 .c-sound__heading {
     margin-bottom: $quarter-gutter;
     @include font(18px, bold, $lh-title);
+}
+
+
+// VU-meter
+// --------------------------------
+.c-sound-vu {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: end;
+    gap: 2px;
+    align-items: center;
+    visibility: hidden;
+    transform: scaleY(0);
+}
+
+.c-sound-vu__meter {
+    width: 2px;
+    height: 24px;
+    background-color: $brand;
+    opacity: 0;
+    transform: scaleY(0);
 }
