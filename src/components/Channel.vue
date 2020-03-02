@@ -56,7 +56,8 @@
 				isPlaying: false,
 				playPauseButton: 'Play',
 				decDisabled: false,
-				incDisabled: true
+                incDisabled: true,
+                tween: Object,
 			};
 		},
 
@@ -64,7 +65,10 @@
 			vuPlaying() {
 				const el = this.$refs.vu.children;
 				const tween = () => {
-					gsap.to(el, {
+					this.tween = gsap.fromTo(el, {
+                        scaleY: 'random(0.2, 1)',
+						opacity: 'random(0.1, 0.8)'
+                    },{
 						duration: 0.1,
 						delay: 'random(0, 0.08)',
 						ease: 'power3.inOut',
@@ -73,23 +77,21 @@
 						repeat: 1,
 						yoyo: true,
 						onComplete() {
-                            // loop animation manually to reset random values every loop
+							// loop animation manually to reset random values every loop
 							tween();
 						}
-					});
+                    });
 				};
 				tween();
 			},
 
-			vuPlayPause(d) {
-				const scale = this.volume.current / 100;
+			vuPlayPause(opacity, scale) {
 				gsap.to(this.$refs.vu, {
-					duration: 1,
+					duration: 0.75,
 					ease: 'power4.out',
 					scaleY: scale,
-					autoAlpha: d
+					autoAlpha: opacity
 				});
-				this.vuPlaying();
 			},
 
 			vuChangeScale() {
@@ -116,15 +118,17 @@
 			playPause() {
 				if (!this.isPlaying) {
 					this.$refs.audio.play();
-					this.vuPlayPause(1);
+					this.vuPlayPause(1, this.volume.current / 100);
+					this.vuPlaying();
 					this.playPauseButton = 'Pause';
 					this.seamlessLoop();
 				} else {
 					this.$refs.audio.pause();
-					this.vuPlayPause(0);
+					this.vuPlayPause(0, 0);
+					setTimeout(() => this.tween.kill(), 1);
 					this.playPauseButton = 'Play';
 				}
-				this.isPlaying = !this.isPlaying;
+                this.isPlaying = !this.isPlaying;
 			},
 
 			checkVolumeButtons() {
@@ -163,10 +167,6 @@
 
 		beforeMount() {
 			this.checkVolumeButtons();
-		},
-		mounted() {
-            // init VU-Meter to create extra random look on second call
-			this.vuPlaying();
 		}
 	};
 </script>
