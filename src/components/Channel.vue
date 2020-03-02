@@ -26,9 +26,7 @@
 			>+</button>
 			<p class="u-fs-14 u-fw-b">{{ volume.current }}%</p>
 			<div class="u-o-hidden">
-				<div class="c-sound-vu" ref="vu">
-					<div class="c-sound-vu__meter" v-for="n in 16"></div>
-				</div>
+				<vc-vu-meter ref="vu" :volume="volume.current"></vc-vu-meter>
 			</div>
 		</div>
 
@@ -38,11 +36,23 @@
 </template>
 
 <script>
-	import { gsap } from 'gsap';
+    import { gsap } from 'gsap';
+    import vcVuMeter from './VuMeter.vue';
+
 	export default {
 		props: {
-			title: String,
-			file: String
+			title: {
+				type: String,
+				required: true
+			},
+			file: {
+				type: String,
+				required: true
+			}
+        },
+        
+        components: {
+			vcVuMeter
 		},
 
 		data() {
@@ -56,53 +66,11 @@
 				isPlaying: false,
 				playPauseButton: 'Play',
 				decDisabled: false,
-                incDisabled: true,
-                tween: Object,
+				incDisabled: true,
 			};
 		},
 
 		methods: {
-			vuPlaying() {
-				const el = this.$refs.vu.children;
-				const tween = () => {
-					this.tween = gsap.fromTo(el, {
-                        scaleY: 'random(0.2, 1)',
-						opacity: 'random(0.1, 0.8)'
-                    },{
-						duration: 0.1,
-						delay: 'random(0, 0.08)',
-						ease: 'power3.inOut',
-						scaleY: 'random(0.2, 1)',
-						opacity: 'random(0.1, 0.8)',
-						repeat: 1,
-						yoyo: true,
-						onComplete() {
-							// loop animation manually to reset random values every loop
-							tween();
-						}
-                    });
-				};
-				tween();
-			},
-
-			vuPlayPause(opacity, scale) {
-				gsap.to(this.$refs.vu, {
-					duration: 0.75,
-					ease: 'power4.out',
-					scaleY: scale,
-					autoAlpha: opacity
-				});
-			},
-
-			vuChangeScale() {
-				const scale = this.volume.current / 100;
-				gsap.to(this.$refs.vu, {
-					duration: 0.3,
-					ease: 'power3.out',
-					scaleY: scale
-				});
-			},
-
 			seamlessLoop() {
 				const audio = this.$refs.audio;
 				const buffer = 3;
@@ -118,17 +86,15 @@
 			playPause() {
 				if (!this.isPlaying) {
 					this.$refs.audio.play();
-					this.vuPlayPause(1, this.volume.current / 100);
-					this.vuPlaying();
+					this.$refs.vu.playPause(1, this.volume.current / 100);
 					this.playPauseButton = 'Pause';
 					this.seamlessLoop();
 				} else {
 					this.$refs.audio.pause();
-					this.vuPlayPause(0, 0);
-					setTimeout(() => this.tween.kill(), 1);
+					this.$refs.vu.playPause(0, 0);
 					this.playPauseButton = 'Play';
 				}
-                this.isPlaying = !this.isPlaying;
+				this.isPlaying = !this.isPlaying;
 			},
 
 			checkVolumeButtons() {
@@ -161,7 +127,7 @@
 				}
 
 				this.checkVolumeButtons();
-				this.vuChangeScale();
+				this.$refs.vu.changeScale(this.volume.current / 100);
 			}
 		},
 
