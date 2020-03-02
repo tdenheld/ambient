@@ -36,7 +36,6 @@
 </template>
 
 <script>
-    import { gsap } from 'gsap';
     import vcVuMeter from './VuMeter.vue';
 
 	export default {
