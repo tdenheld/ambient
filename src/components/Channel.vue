@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<h2 class="heading">{{ title }}</h2>
+		<h2 class="channel-heading">{{ title }}</h2>
 
 		<!-- controls -->
-		<div class="strip">
+		<div class="channel-strip">
 			<!-- play pause -->
 			<button
 				class="c-button"
@@ -18,13 +18,17 @@
 				:disabled="decDisabled"
 				@click="changeVolume('-')"
 			>–</button>
+
 			<button
 				class="c-button c-button--round"
 				:class="{'is-playing': isPlaying}"
 				:disabled="incDisabled"
 				@click="changeVolume('+')"
 			>+</button>
+
 			<p class="u-fs-14 u-fw-b">{{ volume.current }}%</p>
+
+            <!-- VU-meter -->
 			<div class="u-o-hidden">
 				<vc-vu-meter ref="vu"></vc-vu-meter>
 			</div>
@@ -139,12 +143,12 @@
 <style lang="scss" scoped>
 	@import '../assets/styles/style.scss';
 
-	.heading {
+	.channel-heading {
 		margin-bottom: $quarter-gutter;
 		@include font(18px, bold, $lh-title);
 	}
 
-	.strip {
+	.channel-strip {
 		display: grid;
 		// grid-auto-flow: column;
 		grid-template-columns: repeat(3, max-content) repeat(2, 1fr);

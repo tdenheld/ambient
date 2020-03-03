@@ -4,44 +4,24 @@
 			<vc-header></vc-header>
 			<vc-mixer></vc-mixer>
 		</div>
+        <vc-gsap></vc-gsap>
 	</main>
 </template>
 
 <script>
-	import { gsap } from 'gsap';
 	import vcHeader from './components/Header.vue';
     import vcMixer from './components/Mixer.vue';
+    import vcGsap from './components/Gsap.vue';
 
 	export default {
 		components: {
 			vcHeader,
-            vcMixer
-		},
-
-		methods: {
-			animate() {
-				gsap.fromTo('.gsap-stag', {
-					y: 40,
-                },{
-                    duration: 2,
-					ease: 'power4.out',
-					autoAlpha: 1,
-					y: 0,
-                    stagger: 0.05
-				});
-			}
-        },
-        
-        mounted() {
-            this.animate();
-        }
+            vcMixer,
+            vcGsap
+		}
 	};
 </script>
 
 <style lang="scss">
     @import "/assets/styles/style.scss";
-    
-    .gsap-stag {
-        visibility: hidden;
-    }
 </style>

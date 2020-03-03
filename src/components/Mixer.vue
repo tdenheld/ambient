@@ -1,5 +1,5 @@
 <template>
-	<ul class="mixer u-pb-4">
+	<ul class="mixer-grid u-pb-4">
 		<li v-for="entry in sounds" class="gsap-stag">
 			<vc-channel :title="entry.title" :file="entry.file"></vc-channel>
 		</li>
@@ -46,7 +46,7 @@
 <style lang="scss" scoped>
     @import '../assets/styles/style.scss';
 
-	.mixer {
+	.mixer-grid {
         display: grid;
         gap: $gutter;
 
