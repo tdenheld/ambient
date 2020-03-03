@@ -30,7 +30,8 @@
                         repeat: 1,
                         yoyo: true,
                         onComplete() {
-                            // loop animation manually to reset random values every loop
+                            /* loop animation manually to reset
+                               random values every loop */
                             tween();
                         }
                     });
