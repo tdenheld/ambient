@@ -68,6 +68,7 @@
 
 <style lang="scss" scoped>
     @import '../assets/styles/style.scss';
+    
     .vu-meter {
         margin-right: 6px;
         display: grid;
