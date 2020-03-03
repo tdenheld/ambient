@@ -32,7 +32,11 @@
 					{
 						title: 'Varadero Beach',
 						file: 'varadero-beach.m4a'
-					}
+					},
+                    {
+						title: 'Balaton Lake',
+						file: 'balaton-lake.m4a'
+					},
 				]
 			};
 		}
