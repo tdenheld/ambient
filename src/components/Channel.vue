@@ -26,7 +26,7 @@
 			>+</button>
 			<p class="u-fs-14 u-fw-b">{{ volume.current }}%</p>
 			<div class="u-o-hidden">
-				<vc-vu-meter ref="vu" :volume="volume.current"></vc-vu-meter>
+				<vc-vu-meter ref="vu"></vc-vu-meter>
 			</div>
 		</div>
 
