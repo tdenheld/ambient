@@ -1,6 +1,6 @@
 <template>
-	<div class="c-sound-vu" ref="vu">
-		<div class="c-sound-vu__meter" v-for="n in 16"></div>
+	<div class="vu-meter" ref="vu">
+		<div class="vu-meter__line" v-for="n in 16"></div>
 	</div>
 </template>
 
@@ -65,3 +65,25 @@
 		}
 	};
 </script>
+
+<style lang="scss" scoped>
+    @import '../assets/styles/style.scss';
+    .vu-meter {
+        margin-right: 6px;
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: end;
+        gap: 2px;
+        align-items: center;
+        visibility: hidden;
+        transform: scaleY(0);
+    }
+
+    .vu-meter__line {
+        width: 2px;
+        height: 24px;
+        background-color: $brand;
+        opacity: 0;
+        transform: scaleY(0);
+    }
+</style>

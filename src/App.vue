@@ -39,5 +39,9 @@
 </script>
 
 <style lang="scss">
-	@import "/assets/styles/style.scss";
+    @import "/assets/styles/style.scss";
+    
+    .gsap-stag {
+        visibility: hidden;
+    }
 </style>

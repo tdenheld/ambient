@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<h2 class="c-sound__heading">{{ title }}</h2>
+		<h2 class="heading">{{ title }}</h2>
 
 		<!-- controls -->
-		<div class="c-sound__item">
+		<div class="strip">
 			<!-- play pause -->
 			<button
 				class="c-button"
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-    import vcVuMeter from './VuMeter.vue';
+	import vcVuMeter from './VuMeter.vue';
 
 	export default {
 		props: {
@@ -48,9 +48,9 @@
 				type: String,
 				required: true
 			}
-        },
-        
-        components: {
+		},
+
+		components: {
 			vcVuMeter
 		},
 
@@ -65,7 +65,7 @@
 				isPlaying: false,
 				playPauseButton: 'Play',
 				decDisabled: false,
-				incDisabled: true,
+				incDisabled: true
 			};
 		},
 
@@ -135,3 +135,24 @@
 		}
 	};
 </script>
+
+<style lang="scss" scoped>
+	@import '../assets/styles/style.scss';
+
+	.heading {
+		margin-bottom: $quarter-gutter;
+		@include font(18px, bold, $lh-title);
+	}
+
+	.strip {
+		display: grid;
+		// grid-auto-flow: column;
+		grid-template-columns: repeat(3, max-content) repeat(2, 1fr);
+		gap: $quarter-gutter;
+		align-items: center;
+		justify-content: start;
+		padding: $quarter-gutter;
+		background-color: $grey-9;
+		border-radius: 3px;
+	}
+</style>
