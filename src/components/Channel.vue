@@ -28,7 +28,7 @@
 
 			<p class="u-fs-14 u-fw-b">{{ volume.current }}%</p>
 
-            <!-- VU-meter -->
+			<!-- VU-meter -->
 			<div class="u-o-hidden">
 				<vc-vu-meter ref="vu"></vc-vu-meter>
 			</div>
@@ -141,7 +141,8 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '../assets/styles/style.scss';
+	@import '../assets/styles/settings.variables';
+	@import '../assets/styles/tools.mixins';
 
 	.channel-heading {
 		margin-bottom: $quarter-gutter;

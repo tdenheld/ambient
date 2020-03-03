@@ -1,3 +1,7 @@
+<template>
+    
+</template>
+
 <script>
 	import { gsap } from 'gsap';
 
