@@ -36,7 +36,11 @@
 					{
 						title: 'Balaton Lake',
 						file: 'balaton-lake.m4a'
-					}
+					},
+                    {
+						title: 'Fireplace',
+						file: 'fireplace.m4a'
+					},
 				]
 			};
 		}
