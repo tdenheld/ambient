@@ -76,7 +76,7 @@
 		methods: {
 			seamlessLoop() {
 				const audio = this.$refs.audio;
-                const buffer = 16;
+                const buffer = 8;
                 audio.currentTime = 180;
 
 				audio.addEventListener('timeupdate', () => {
