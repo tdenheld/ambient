@@ -76,13 +76,15 @@
 		methods: {
 			seamlessLoop() {
 				const audio = this.$refs.audio;
-				const buffer = 8;
+                const buffer = 16;
+                audio.currentTime = 180;
 
 				audio.addEventListener('timeupdate', () => {
 					if (audio.currentTime > audio.duration - buffer) {
 						audio.currentTime = 0;
 						audio.play();
-					}
+                    }
+                    //console.log(audio.currentTime, audio.duration);
 				});
 			},
 
