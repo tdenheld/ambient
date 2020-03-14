@@ -55,7 +55,6 @@
                 if (opacity) vm.playing();
             },
 
-
 			changeScale(scale) {
 				gsap.to(this.$refs.vu, {
 					duration: 0.3,
