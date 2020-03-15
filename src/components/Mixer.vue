@@ -40,6 +40,30 @@
                     {
 						title: 'Fireplace',
 						file: 'fireplace.m4a'
+                    },
+                    {
+						title: 'Evening Lagoon',
+						file: 'evening-lagoon.m4a'
+                    },
+                    {
+						title: 'Forrest Rain',
+						file: 'forrest-rain.m4a'
+                    },
+                    {
+						title: 'Great Plains',
+						file: 'great-plains.m4a'
+                    },
+                    {
+						title: 'Monsoon',
+						file: 'monsoon.m4a'
+                    },
+                    {
+						title: 'Night Crickets',
+						file: 'night-crickets.m4a'
+                    },
+                    {
+						title: 'Pike Creek',
+						file: 'pike-creek.m4a'
 					},
 				]
 			};
