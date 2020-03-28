@@ -1,6 +1,6 @@
 <template>
 	<ul class="mixer-grid u-pb-4">
-		<li v-for="entry in sounds" class="gsap-stag">
+		<li v-for="entry in sounds" class="a a-fi-up-small a-stag-del a-dur-1500">
 			<vc-channel :title="entry.title" :file="entry.file"></vc-channel>
 		</li>
 	</ul>
